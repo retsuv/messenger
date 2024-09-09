@@ -3,19 +3,23 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 
 interface IRoom {
     currentRoom: string
+    rooms: string[]
 }
 
-const initialState: IRoom = {currentRoom: ""};
+const initialState: IRoom = {currentRoom: "", rooms: []};
 
 const roomSlice = createSlice({
     name: "room",
     initialState,
     reducers: {
-        changeRoom: (state, action: PayloadAction<string>) => {
+        changeCurrentRoom: (state, action: PayloadAction<string>) => {
             state.currentRoom = action.payload;
         },
+        addRoom: (state, action: PayloadAction<string>) => {
+            state.rooms.push(action.payload);
+        }
     },
 });
 
-export const { changeRoom } = roomSlice.actions;
+export const { changeCurrentRoom, addRoom } = roomSlice.actions;
 export default roomSlice.reducer;
