@@ -6,8 +6,10 @@ import { addMessage } from "@/components/utils/redux/features/messages/messagesS
 import { useState } from "react";
 
 export default function Inputfield() {
+
     const [messText, setMessText] = useState("");
     const dispatch = useDispatch();
+
     return(
         <div className="w-2/3 mx-auto flex gap-4">
             <input
@@ -16,7 +18,9 @@ export default function Inputfield() {
                 onChange={e => setMessText(e.target.value)}
                 value={messText}
             />
-            <button onClick={() => dispatch(addMessage(messText))}>
+            <button onClick={() => {
+                if(messText)dispatch(addMessage(messText))
+                }}>
                 <SendHorizonal 
                     color="white" 
                     className="w-auto h-auto bg-black transition rounded-full cursor-pointer"
@@ -26,5 +30,5 @@ export default function Inputfield() {
                 />
             </button>
         </div>
-    )
-}
+    );
+};

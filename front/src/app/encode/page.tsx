@@ -1,6 +1,6 @@
 "use client";
 
-import hashing from "@/components/utils/hashing/encryption";
+import encryption from "@/components/utils/hashing/encryption";
 import { useEffect, useState } from "react";
 
 export default function page() {
@@ -8,8 +8,10 @@ export default function page() {
     const [hash, setHash] = useState<string>("");
     useEffect(() => {
         if(text) {
-            setHash(hashing(text));
+            setHash(encryption(text));
+            return;
         }
+        setHash("");
     }, [text]);
     return(
         <div className="flex flex-col gap-y-6">

@@ -8,17 +8,13 @@ const app = express();
 const server = createServer(app);
 const io = new Server(server, {
     cors: {
-      origin: "*"
+      origin: "*",
     }
 });
 
 app.get('/', (req, res) => {
   res.sendFile(join(__dirname, 'index.html'));
 });
-
-app.post('/post', (req, res) => {
-  res.send("hello");
-})
 
 io.on("connection", socket => {
     socket.on("message", msg => {

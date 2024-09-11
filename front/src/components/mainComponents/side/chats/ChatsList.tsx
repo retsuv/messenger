@@ -6,11 +6,9 @@ export default function ChatList() {
         <div className="flex flex-col border">
             <ScrollArea.Root className="h-[840px] overflow-hidden">
                 <ScrollArea.Viewport className="w-full h-full" style={{borderRadius: "inherit"}}>
-                    <ChatItem name='lila'/>
-                    <ChatItem name='kate'/>
                     <ChatItem name='joey'/>
-                    <ChatItem name='corey'/>
                     <ChatItem name='mick'/>
+                    <ChatItem name='corey'/>
                 </ScrollArea.Viewport>
                     <ScrollArea.Scrollbar className="ScrollAreaScrollbar" orientation="vertical">
                         <ScrollArea.Thumb className="ScrollAreaThumb" />
