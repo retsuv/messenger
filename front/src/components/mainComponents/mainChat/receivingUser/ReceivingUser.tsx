@@ -11,9 +11,9 @@ export default function ReceivingUser() {
                 </div>
             </div>
             <div className="flex items-center py-3 px-8 gap-12">
-                <Phone color="gray"/>
-                <Search color="gray"/>
-                <EllipsisVertical color="gray"/>
+                <Phone color="gray" className="cursor-pointer"/>
+                <Search color="gray" className="cursor-pointer"/>
+                <EllipsisVertical color="gray" className="cursor-pointer"/>
             </div>
         </div>
     )
