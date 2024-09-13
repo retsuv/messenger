@@ -43,6 +43,13 @@
         messages.appendChild(item);
         window.scrollTo(0, document.body.scrollHeight);
       });
+      
+      socket.on("username", ({normalName, encryptedName}) => {
+        const item = document.createElement('li');
+        item.textContent = encryptedName + " CONNECTED";
+        messages.appendChild(item);
+        window.scrollTo(0, document.body.scrollHeight);
+      });
     </script>
   </body>
 </html>

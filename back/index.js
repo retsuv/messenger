@@ -20,6 +20,9 @@ io.on("connection", socket => {
     socket.on("message", msg => {
       io.emit("message", msg);
     });
+    socket.on("username", msg => {
+      io.emit("username", msg);
+    });
 });
 
 server.listen(5050, () => {
