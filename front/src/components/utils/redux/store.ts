@@ -1,11 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
-import roomReducer from './features/rooms/roomSlice';
 import messagesReducer from './features/messages/messagesSlice'
 import userNameReducer from './features/username/userNameSlice'
+import companionsSlice from './features/companions/companionsSlice';
 
 export const store = configureStore({
     reducer: {
-        room: roomReducer,
+        companions: companionsSlice,
         messageList: messagesReducer,
         username: userNameReducer
     },

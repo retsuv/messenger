@@ -44,9 +44,23 @@
         window.scrollTo(0, document.body.scrollHeight);
       });
       
+      socket.on("chatting", (msg) => {
+        const item = document.createElement('li');
+        item.textContent = msg;
+        messages.appendChild(item);
+        window.scrollTo(0, document.body.scrollHeight);
+      });
+
       socket.on("username", ({normalName, encryptedName}) => {
         const item = document.createElement('li');
-        item.textContent = encryptedName + " CONNECTED";
+        item.textContent = "CONNECTED " + encryptedName;
+        messages.appendChild(item);
+        window.scrollTo(0, document.body.scrollHeight);
+      });
+
+      socket.on("search", (hash) => {
+        const item = document.createElement('li');
+        item.textContent = "LINK IS " + hash;
         messages.appendChild(item);
         window.scrollTo(0, document.body.scrollHeight);
       });

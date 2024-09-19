@@ -10,7 +10,7 @@ export default function Registration() {
 
     function sendUserName(name: string) {
         dispatch(setUserName(name)); 
-        socket.emit("username", {normalName: name, encryptedName: encryption(name)})
+        socket.emit("username", encryption(name))
     };
 
     const dispatch = useDispatch();

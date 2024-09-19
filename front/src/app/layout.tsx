@@ -6,7 +6,7 @@ import Provide from "./provide";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-    title: "new telegram",
+    title: "vmeste",
     description: "from genius for u)",
 };
 

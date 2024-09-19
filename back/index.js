@@ -1,9 +1,12 @@
 const express = require('express');
 const { createServer } = require('node:http');
+const { connect } = require('node:http2');
 const { join } = require('node:path');
 const { Server } = require('socket.io');
 
 const app = express();
+
+let room = "";
 
 const server = createServer(app);
 const io = new Server(server, {
@@ -17,14 +20,35 @@ app.get('/', (req, res) => {
 });
 
 io.on("connection", socket => {
+
+    console.log("connected", socket.id);
+
+    socket.on("disconnect", reason => {
+        console.log("disconnected", socket.id, "reason:", reason);
+    });
+
     socket.on("message", msg => {
       io.emit("message", msg);
+      console.log(msg);
     });
+
     socket.on("username", msg => {
-      io.emit("username", msg);
+        io.emit("username", msg);
+        console.log(msg);
     });
+
+    socket.on("search", hash => {
+        io.emit("search", hash);
+        socket.join(hash);
+        room = hash;
+    });
+
+    socket.on("chatting", message => {
+        io.to(room).emit("chatting", message);
+    });
+
 });
 
 server.listen(5050, () => {
-  console.log('server running at http://localhost:5050');
+    console.log('server running at http://localhost:5050');
 });

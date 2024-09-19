@@ -5,7 +5,9 @@ interface IUserName {
     userName: string
 }
 
-const initialState:IUserName = {userName: ""}; 
+const initialState:IUserName = {
+    userName: ""
+}; 
 
 const userNameSlice = createSlice({
     name: "username",
