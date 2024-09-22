@@ -4,20 +4,19 @@ import { addCompanion } from "@/components/utils/redux/features/companions/compa
 import { RootState } from "@/components/utils/redux/store";
 import { socket } from "@/components/utils/socket/Socket";
 import { SearchIcon } from "lucide-react";
-import { useRouter } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
 
-export default function SearchButton({findingName}: {findingName: string}) {
+export default function SearchButton({findingName, clearName}: {findingName: string, clearName: any}) {
     const userName = useSelector((state: RootState) => state.username.userName);
     const dispatch = useDispatch();
-    const router = useRouter();
     return(
         <button
+            className=""
             onClick={() => {
                 if(findingName.trim()) {
-                    // router.push("/" + combineStrings(encryption(userName), encryption(findingName)));
                     socket.emit("search", combineStrings(encryption(userName), encryption(findingName)));
                     dispatch(addCompanion(findingName));
+                    clearName("");
                 }
             }}
         >

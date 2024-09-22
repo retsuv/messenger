@@ -5,12 +5,13 @@ import { useDispatch } from "react-redux";
 import { setUserName } from "@/components/utils/redux/features/username/userNameSlice";
 import { socket } from "@/components/utils/socket/Socket";
 import encryption from "@/components/utils/hashing/encryption";
+import { parseDate } from "@/components/utils/hashing/parseDate";
 
 export default function Registration() {
 
     function sendUserName(name: string) {
         dispatch(setUserName(name)); 
-        socket.emit("username", encryption(name))
+        socket.emit("user", {hashedName: encryption(name), userId: socket.id, time: parseDate(new Date())});
     };
 
     const dispatch = useDispatch();

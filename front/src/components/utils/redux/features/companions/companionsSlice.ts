@@ -18,9 +18,9 @@ interface IInitialState {
 }
 
 const initialState: IInitialState = {
-    currentCompanionName: "Saved Messages",
+    currentCompanionName: "",
     currentCompanionMessages: [],
-    companions: [{name: "Saved Messages", messages: []}],
+    companions: [],
 }
 
 const companionsSlice = createSlice({

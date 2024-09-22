@@ -21,23 +21,22 @@ app.get('/', (req, res) => {
 
 io.on("connection", socket => {
 
-    console.log("connected", socket.id);
-
-    socket.on("disconnect", reason => {
-        console.log("disconnected", socket.id, "reason:", reason);
+    socket.on("disconnect", () => {
+        io.emit("disconnected", socket.id);
     });
-
+    
     socket.on("message", msg => {
-      io.emit("message", msg);
-      console.log(msg);
-    });
-
-    socket.on("username", msg => {
-        io.emit("username", msg);
+        io.emit("message", msg);
         console.log(msg);
     });
-
+    
+    socket.on("user", user => {
+        io.emit("user", user);
+        // console.log(user);
+    });
+    
     socket.on("search", hash => {
+        console.log(socket.rooms);
         io.emit("search", hash);
         socket.join(hash);
         room = hash;
